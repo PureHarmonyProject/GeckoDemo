@@ -39,81 +39,17 @@ rustup target add x86_64-unknown-linux-ohos
 
 # Clone Firefox source
 git clone https://github.com/mozilla-firefox/firefox.git
+-
 cd firefox
+-
 Architecture Overview
+-
 OpenHarmony Integration Architecture
-┌─────────────────────────────────────────────┐
-│          OpenHarmony Application            │
-├─────────────────────────────────────────────┤
-│     ArkUI Framework (eTS/ArkTS)             │
-│  ┌─────────────────────────────────────────┐ │
-│  │      XComponent (Native Surface)        │ │
-│  │  ┌─────────────────────────────────┐   │ │
-│  │  │     OH_NativeXComponent         │   │ │
-│  │  │     EGL/OpenGL ES Context       │   │ │
-│  │  │     Event Handling Bridge       │   │ │
-│  │  └─────────────────────────────────┘   │ │
-│  └─────────────────────────────────────────┘ │
-├─────────────────────────────────────────────┤
-│      Modified Gecko Engine for OHOS        │
-│  ┌─────────────────────────────────────────┐ │
-│  │  SpiderMonkey JS Engine                │ │
-│  │  Servo Layout Engine                   │ │
-│  │  WebRender (OpenGL ES Backend)         │ │
-│  │  OHOS Platform Abstraction Layer       │ │
-│  │  ├─ OHOS File System APIs             │ │
-│  │  ├─ OHOS Network APIs                 │ │
-│  │  ├─ OHOS Graphics APIs                │ │
-│  │  └─ OHOS Memory Management            │ │
-│  └─────────────────────────────────────────┘ │
-└─────────────────────────────────────────────┘
+<img width="325" height="465" alt="image" src="https://github.com/user-attachments/assets/12c4a4e1-df76-41c5-9d33-925f2d24a382" />
+<img width="454" height="751" alt="image" src="https://github.com/user-attachments/assets/4572f3ea-2a19-4ecf-8000-c63a2578efc0" />
 
 
 
 
 
 
-
-
-
-
-FirefoxOHOS/
-├── entry/                          # Main application module
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── ets/               # ArkTS source code
-│   │   │   │   ├── Application/
-│   │   │   │   ├── MainAbility/
-│   │   │   │   ├── pages/
-│   │   │   │   │   └── Index.ets  # Main page with XComponent
-│   │   │   │   └── components/     # Custom components
-│   │   │   ├── resources/          # Resource files
-│   │   │   ├── cpp/               # Native C++ code
-│   │   │   │   ├── gecko_bridge/  # Gecko-OpenHarmony bridge
-│   │   │   │   ├── xcomponent_adapter/
-│   │   │   │   └── CMakeLists.txt
-│   │   │   └── libs/              # Prebuilt libraries
-│   │   │       └── gecko/         # Compiled Gecko libraries
-│   │   └── ohosTest/              # Test code
-│   └── build-profile.json         # Build configuration
-├── gecko_port/                    # Gecko porting layer module
-│   ├── src/
-│   │   └── main/
-│   │       ├── cpp/
-│   │       │   ├── widget/        # OpenHarmony widget implementation
-│   │       │   ├── gfx/           # Graphics integration
-│   │       │   ├── netwerk/       # Network stack
-│   │       │   └── xpcom/         # XPCOM components
-│   │       └── CMakeLists.txt
-│   └── build-profile.json
-├── webrender_ohos/                # WebRender adaptation module
-│   ├── src/
-│   │   └── main/
-│   │       ├── rust/              # Rust WebRender bindings
-│   │       ├── cpp/               # C++ integration layer
-│   │       └── CMakeLists.txt
-│   └── build-profile.json
-├── build/
-├── gradle/
-├── local.properties
-└── settings.gradle               # Module inclusion
