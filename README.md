@@ -45,6 +45,7 @@ cd firefox
 Architecture Overview
 -
 OpenHarmony Integration Architecture
+-
 <img width="325" height="465" alt="image" src="https://github.com/user-attachments/assets/12c4a4e1-df76-41c5-9d33-925f2d24a382" />
 <img width="454" height="751" alt="image" src="https://github.com/user-attachments/assets/4572f3ea-2a19-4ecf-8000-c63a2578efc0" />
 
